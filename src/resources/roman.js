@@ -132,7 +132,7 @@ export function validateRoman(romano) {
                 if (c === "C" && "DM".indexOf(c1) < 0)
                     return "8: " + r.substring(i, i + 2);
             }
-            if ("VLD".indexOf(c) >= 0 && c == c1)
+            if ("VLD".indexOf(c) >= 0 && c === c1)
                 return "9: " + r.substring(i, i + 2);
         }
     }
