@@ -96,7 +96,7 @@ class RomanForm extends React.Component {
             <div className="w-full max-w-lg">
                 <div style={{display: "flex", margin: "0.5em 0.5em 0.5em 0.5em"}}>
                     <img src={logo} className="App-logo" alt="logo"/>
-                    <h1 style={{alignSelf: "end", fontFamily: "fantasy", fontWeight: "700", fontSize: "25pt"}}>Convertendo Números</h1>
+                    <h1  style={{alignSelf: "end", fontFamily: "medievalSharp", fontWeight: "700", fontSize: "20pt"}}>Convertendo Números</h1>
                 </div>
                 <Card sx={{ minWidth: 275, padding: 2, boxShadow: "10px 10px 32px -6px rgba(0,0,0,0.5)", backgroundColor: "rgb(246, 241, 233)" }}>
     
@@ -137,11 +137,9 @@ class RomanForm extends React.Component {
                 </table>
 
     </Card>
-    <footer>
-        
-    </footer>
-            </div>
-            
+    
+    </div>
+
         )
     }
 }
