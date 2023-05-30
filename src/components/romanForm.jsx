@@ -1,43 +1,131 @@
 import React from "react";
+import CustomSwitch from "./customSwitch";
+import {int2roman, roman2int} from '../resources/roman'
 
 class RomanForm extends React.Component {
+    constructor() {
+        super()
+
+        this.state = {
+            entrada: '',
+            checked: false,
+            resultado: ''
+        };
+
+        this.setCheckedValue = this.setCheckedValue.bind(this)
+    }
+
+    setCheckedValue = (checked) => {
+        this.setState({checked});
+        this.reset();
+    }
+
+    reset = () => {
+        this.setState({
+            entrada: '',
+            resultado: ''
+        })
+    }
+
+    converter = (valor) => {
+
+        if (valor === '') {
+            this.reset();
+            return;
+        }
+
+        let conversao;
+
+        if (!this.state.checked) {
+            conversao = int2roman(valor);
+        }
+        else {
+            conversao = roman2int(valor);
+        }
+
+        this.setState({resultado: conversao});
+    }
+
+    handleInput = (event) => {
+        if (this.state.checked) {
+            if(event.target.value.match("^[a-zA-Z]*$")){
+                if (event.target.value.toUpperCase().match("^M{0,4}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$")) {
+                    this.changeValue(event.target.value);
+                }
+            }
+        } else if (!event.target.value.match("^([^0-9]*)$")) {
+            this.changeValue(event.target.value);
+        } else {
+            this.changeValue('');
+        }
+    }
+
+    changeValue(value) {
+        this.setState({entrada: value});
+        this.converter(value);
+    }
 
     render() {
-        const { resultado, handleInput, converter } = this.props;
+
+        let entrada, resultado;
+
+        if (this.state.checked) {
+            entrada = <div><input 
+            className="appearance-none w-full bg-gray-600 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+            type="text" onChange={this.handleInput} value={this.state.entrada}/>
+            <p className="text-red-500 text-xs italic">Digite o valor desejado</p></div>
+
+            resultado = <div><input 
+            className="appearance-none w-full bg-transparent text-white border border-blue-500 rounded py-3 px-4 mb-7 leading-tight focus:outline-none"
+            type="text" readOnly={true} value={this.state.resultado}/></div>
+        } else {
+            entrada = <div><input 
+            className="appearance-none w-full bg-gray-600 text-gray-700 border border-blue-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+            type="text" onChange={this.handleInput} value={this.state.entrada}/>
+            <p className="text-blue-500 text-xs italic">Digite o valor desejado</p></div>
+
+            resultado = <div><input 
+            className="appearance-none w-full bg-transparent text-white border border-red-500 rounded py-3 px-4 mb-7 leading-tight focus:outline-none"
+            type="text" readOnly={true} value={this.state.resultado}/></div>
+        }
+
         return (
             <div className="w-full max-w-lg">
-                <div className="flex flex-wrap -mx-3 mb-6">
-                    <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                        <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                               htmlFor="grid-first-name">
-                            Número
-                        </label>
-                        <input
-                            className="appearance-none w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-                            type="text" onInput={handleInput}/>
-                        <p className="text-red-500 text-xs italic">Digite o valor desejado</p>
-                    </div>
-                </div>
-                <div className="flex flex-wrap -mx-3 mb-2">
-                    <button
-                        className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full"
-                        onClick={converter}>
-                        Converter!
-                    </button>
-                </div>
-                <div>
-                    <div className="w-full md:w-1/2 px-3">
-                        <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                               htmlFor="grid-last-name">
-                            Resultado
-                        </label>
-                        <span
-                            className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                        >
-                        {resultado}
-                    </span>
-                    </div>
-                </div>
+                <table>
+                    <tbody>
+                        <tr style={{width:"100%", verticalAlign:"middle"}}>
+                            <td style={{width:"10%"}}>
+                                <CustomSwitch checked={this.state.checked} setCheckedValue={this.setCheckedValue}></CustomSwitch>
+                            </td>
+                            <td style={{width:"50%"}}>
+                                <div className="flex flex-wrap">
+                                    <div className="w-full px-3 mb-6 md:mb-0">
+                                        <label className="block uppercase tracking-wide text-gray-500 text-sm font-bold mb-2"
+                                                htmlFor="grid-first-name">
+                                                {this.state.checked ? 'Romano' : 'Número'} 
+                                        </label>
+                                        {entrada}
+                                    </div>
+                                </div>
+                            </td>
+                            <td  style={{width:"5%"}}>
+                                <label className="block uppercase tracking-wide text-gray-500 text-lg font-bold mb-2"
+                                    htmlFor="grid-last-name">
+                                    =
+                                </label>
+                            </td>
+                            <td  style={{width:"35%"}}>
+                                <div className="w-full px-3 mb-6 md:mb-0">
+                                    <label className="block uppercase tracking-wide text-gray-500 text-sm font-bold mb-2"
+                                                        htmlFor="grid-first-name">
+                                                        {this.state.checked ? 'Número' : 'Romano'} 
+                                                </label>
+                                                {resultado}
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         )
     }
