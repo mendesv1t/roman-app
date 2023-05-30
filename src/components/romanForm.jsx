@@ -6,13 +6,18 @@ import '../App.css'
 import logo from '../assets/hamsterromano.png'
 
 class RomanForm extends React.Component {
+
+    entradaStorage = localStorage.getItem('entrada');
+    checkedStorage = localStorage.getItem('checked');
+    resultadoStorage = localStorage.getItem('resultado');
+
     constructor() {
         super()
 
         this.state = {
-            entrada: '',
-            checked: false,
-            resultado: ''
+            entrada: this.entradaStorage ?? '',
+            checked: this.checkedStorage ?? false,
+            resultado: this.resultadoStorage ?? ''
         };
 
         this.setCheckedValue = this.setCheckedValue.bind(this)
@@ -20,6 +25,7 @@ class RomanForm extends React.Component {
 
     setCheckedValue = (checked) => {
         this.setState({checked});
+        localStorage.setItem('checked', checked)
         this.reset();
     }
 
@@ -28,6 +34,8 @@ class RomanForm extends React.Component {
             entrada: '',
             resultado: ''
         })
+        localStorage.setItem('entrada', '')
+        localStorage.setItem('resultado', '')
     }
 
     converter = (valor) => {
@@ -47,6 +55,8 @@ class RomanForm extends React.Component {
         }
 
         this.setState({resultado: conversao});
+        localStorage.setItem('entrada', valor)
+        localStorage.setItem('resultado', conversao)
     }
 
     handleInput = (event) => {
