@@ -1,6 +1,9 @@
 import React from "react";
 import CustomSwitch from "./customSwitch";
 import {int2roman, roman2int} from '../resources/roman'
+import Card from '@mui/material/Card';
+import '../App.css'
+import logo from '../assets/hamsterromano.png'
 
 class RomanForm extends React.Component {
     constructor() {
@@ -53,7 +56,7 @@ class RomanForm extends React.Component {
                     this.changeValue(event.target.value);
                 }
             }
-        } else if (!event.target.value.match("^([^0-9]*)$")) {
+        } else if (!event.target.value.match("^[^0-9]*$")) {
             this.changeValue(event.target.value);
         } else {
             this.changeValue('');
@@ -71,26 +74,32 @@ class RomanForm extends React.Component {
 
         if (this.state.checked) {
             entrada = <div><input 
-            className="appearance-none w-full bg-gray-600 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+            className="appearance-none w-full bg-transparent text-black border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
             type="text" onChange={this.handleInput} value={this.state.entrada}/>
             <p className="text-red-500 text-xs italic">Digite o valor desejado</p></div>
 
             resultado = <div><input 
-            className="appearance-none w-full bg-transparent text-white border border-blue-500 rounded py-3 px-4 mb-7 leading-tight focus:outline-none"
+            className="appearance-none w-full bg-transparent text-black border border-blue-500 rounded py-3 px-4 mb-7 leading-tight focus:outline-none"
             type="text" readOnly={true} value={this.state.resultado}/></div>
         } else {
             entrada = <div><input 
-            className="appearance-none w-full bg-gray-600 text-gray-700 border border-blue-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+            className="appearance-none w-full bg-transparent text-black border border-blue-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
             type="text" onChange={this.handleInput} value={this.state.entrada}/>
             <p className="text-blue-500 text-xs italic">Digite o valor desejado</p></div>
 
             resultado = <div><input 
-            className="appearance-none w-full bg-transparent text-white border border-red-500 rounded py-3 px-4 mb-7 leading-tight focus:outline-none"
+            className="appearance-none w-full bg-transparent text-black border border-red-500 rounded py-3 px-4 mb-7 leading-tight focus:outline-none"
             type="text" readOnly={true} value={this.state.resultado}/></div>
         }
 
         return (
             <div className="w-full max-w-lg">
+                <div style={{display: "flex", margin: "0.5em 0.5em 0.5em 0.5em"}}>
+                    <img src={logo} className="App-logo" alt="logo"/>
+                    <h1 style={{alignSelf: "end", fontFamily: "fantasy", fontWeight: "700", fontSize: "25pt"}}>Convertendo Números</h1>
+                </div>
+                <Card sx={{ minWidth: 275, padding: 2, boxShadow: "10px 10px 32px -6px rgba(0,0,0,0.5)", backgroundColor: "rgb(246, 241, 233)" }}>
+    
                 <table>
                     <tbody>
                         <tr style={{width:"100%", verticalAlign:"middle"}}>
@@ -126,7 +135,13 @@ class RomanForm extends React.Component {
                         </tr>
                     </tbody>
                 </table>
+
+    </Card>
+    <footer>
+        
+    </footer>
             </div>
+            
         )
     }
 }

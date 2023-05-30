@@ -1,4 +1,4 @@
-import logo from './assets/hamsterromano.png'
+
 import './App.css';
 import './index.css'
 import './tailwind.css'
@@ -8,16 +8,21 @@ import React from "react";
 
 class App extends React.Component{
 
+    componentDidMount(){
+        document.title = "Roman Converter"
+      }
+
     render() {
+
+        
         return (
             <React.Fragment>
-                <header className="App-header">
-                    <img src={logo} className="App-logo" alt="logo"/>
-                    <RomanForm/>
-                </header>
+                <RomanForm/>
             </React.Fragment>
         );
     }
+
+    
 }
 
 export default App;
