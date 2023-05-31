@@ -103,10 +103,12 @@ class RomanForm extends React.Component {
         }
 
         return (
-            <div className="w-full max-w-lg">
-                <div style={{display: "flex", margin: "0.5em 0.5em 0.5em 0.5em"}}>
+            <div  style={{width: "50vw"}}>
+                <div style={{display: "flex", justifyContent: "center"}}>
                     <img src={logo} className="App-logo" alt="logo"/>
-                    <h1  style={{alignSelf: "end", fontFamily: "medievalSharp", fontWeight: "700", fontSize: "20pt"}}>Convertendo Números</h1>
+                </div>
+                <div style={{display: "flex", margin: "0.5em 0.5em 0.5em 0.5em", justifyContent: "center"}}>
+                    <h1 className="font-dalek"  style={{alignSelf: "end", fontWeight: "700", fontSize: "25pt"}}>Convertendo Números Romanos</h1>
                 </div>
                 <Card sx={{ minWidth: 275, padding: 2, boxShadow: "10px 10px 32px -6px rgba(0,0,0,0.5)", backgroundColor: "rgb(246, 241, 233)" }}>
     
@@ -116,7 +118,7 @@ class RomanForm extends React.Component {
                             <td style={{width:"10%"}}>
                                 <CustomSwitch checked={this.state.checked} setCheckedValue={this.setCheckedValue}></CustomSwitch>
                             </td>
-                            <td style={{width:"50%"}}>
+                            <td style={{width:"43%"}}>
                                 <div className="flex flex-wrap">
                                     <div className="w-full px-3 mb-6 md:mb-0">
                                         <label className="block uppercase tracking-wide text-gray-500 text-sm font-bold mb-2"
@@ -127,13 +129,13 @@ class RomanForm extends React.Component {
                                     </div>
                                 </div>
                             </td>
-                            <td  style={{width:"5%"}}>
+                            <td  style={{width:"4%"}}>
                                 <label className="block uppercase tracking-wide text-gray-500 text-lg font-bold mb-2"
-                                    htmlFor="grid-last-name">
+                                    htmlFor="grid-last-name" style={{display: "flex", justifyContent: "center"}}>
                                     =
                                 </label>
                             </td>
-                            <td  style={{width:"35%"}}>
+                            <td  style={{width:"43%"}}>
                                 <div className="w-full px-3 mb-6 md:mb-0">
                                     <label className="block uppercase tracking-wide text-gray-500 text-sm font-bold mb-2"
                                                         htmlFor="grid-first-name">
