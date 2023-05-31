@@ -14,7 +14,7 @@ const Footer = () => {
                   title='Luiz Carlos Ferreira'
               />
           </a>
-          <h6 className="block tracking-wide text-gray-500 text-sm font-bold mb-2" style={{fontFamily: "medievalSharp", fontWeight: "400", fontSize: "15pt", color: "black"}}>Autores</h6>
+          <h6 className="block tracking-wide text-gray-500 text-sm font-bold mb-1" style={{fontFamily: "DalekPinpoint", fontWeight: "400", fontSize: "15pt", color: "black"}}>Autores</h6>
           <a href="https://github.com/mendesv1t/">
               <img
                   src={githubRoxo}

@@ -4,7 +4,7 @@
 }
 
 body {
-  background-color: #FF5858;
+  background-color: #420516;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -21,7 +21,7 @@ body {
 
 
 .App-logo {
-  height: 10vmin;
+  height: 20vmin;
   pointer-events: none;
   margin-right: 1em;
 }
@@ -48,4 +48,8 @@ body {
   to {
     transform: rotate(360deg);
   }
+}
+
+.font-dalek {
+  font-family: "DalekPinpoint";
 }

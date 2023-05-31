@@ -13,8 +13,8 @@ class App extends React.Component{
 
         return (
             <React.Fragment>
-                <div style={{height: "31%"}}></div>
-                <div style={{display: "flex", justifyContent: "center", flexDirection: "row", height: "61%"}}>
+                <div style={{height: "20%"}}></div>
+                <div style={{display: "flex", justifyContent: "center", flexDirection: "row", height: "72%"}}>
                     <RomanForm/>
                 </div>
                 <Footer/>
