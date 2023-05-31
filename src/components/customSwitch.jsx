@@ -3,9 +3,15 @@ import Switch from "react-switch";
 import {checkedIcon, uncheckedIcon} from './icons';
 
 class CustomSwitch extends Component {
+
+  checkedStorage = localStorage.getItem('checked');
+
   constructor(props) {
     super(props);
-    this.state = { checked: false };
+
+    this.state = { 
+      checked: this.checkedStorage ? JSON.parse(this.checkedStorage) : false 
+    };
     this.handleChange = this.handleChange.bind(this);
   }
 

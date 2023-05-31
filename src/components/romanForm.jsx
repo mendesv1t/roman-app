@@ -14,9 +14,11 @@ class RomanForm extends React.Component {
     constructor() {
         super()
 
+        console.log(this.checkedStorage)
+
         this.state = {
             entrada: this.entradaStorage ?? '',
-            checked: this.checkedStorage ?? false,
+            checked: this.checkedStorage ? JSON.parse(this.checkedStorage) : false,
             resultado: this.resultadoStorage ?? ''
         };
 
